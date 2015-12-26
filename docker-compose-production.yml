@@ -1,0 +1,14 @@
+web:
+  image: nginx:latest
+
+acl:
+  build: .
+  ports:
+  - '80:80'
+  links:
+  - web
+  environment:
+    PROXY_PASS: web:80
+    AUTH_USERS: |
+      admin:$apr1$sR9Z8Xjj$YsZW.Q85ttqfXu1GMQkqe/
+
